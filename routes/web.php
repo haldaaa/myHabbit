@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FamilleControler;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\myTaskController;
 
@@ -30,3 +31,6 @@ Route::get('/test', function () {
 
 Route::get('/create-task', [myTaskController::class, 'index']);
 Route::post('/create-task', [myTaskController::class, 'store']);
+
+Route::get('/create-family', [FamilleControler::class, 'index']);
+Route::post('/create-family', [FamilleControler::class, 'store']);

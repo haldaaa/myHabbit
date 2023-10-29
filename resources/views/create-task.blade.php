@@ -4,7 +4,9 @@
 
 @section('contenu')
 
-<div class="col-md-6">
+<!-- Debut div formulaire tache -->
+
+<div class="col-md-6"> 
   <form method="POST" action="/create-task">
   @csrf
     <div class="form-group row">
@@ -52,38 +54,9 @@
         </div>
     </form> <!-- Fin formulaire task -->
 
-  </div> <!-- Fin Div colmd6 -->
-
-  <div class="col-md-4">
+  </div> <!-- Fin Div formulaire tache colmd6 -->
 
 
-    <form method="#" action="/create-task">
-      @csrf
-        <div class="form-group row">
-          <label class="col-4 col-form-label" for="taskName">Nom activité</label> 
-            <div class="col-8">
-              <input id="taskName" name="activiteName" placeholder="Hygiene, Sport" type="text" class="form-control">
-            </div>
-        </div>
-
-    
-          <div class="form-group row">
-            <label for="taskDescription" class="col-4 col-form-label">Description et objectifs</label> 
-              <div class="col-8">
-                <textarea id="taskDescription" name="activiteDesc" cols="40" rows="3" class="form-control" aria-describedby="taskDescriptionHelpBlock"></textarea> 
-                <span id="taskDescriptionHelpBlock" class="form-text text-muted">Se brosser au moins 5min</span>
-              </div>
-          </div>
-    
-            <div class="form-group row">
-              <div class="offset-4 col-8">
-                <button name="submit" type="submit" class="btn btn-primary">Submit</button>
-              </div>          
-            </div>
-        </form>
-
-
-  </div>
 
 
      

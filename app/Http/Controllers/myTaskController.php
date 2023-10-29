@@ -4,18 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class myTaskController extends Controller
 {
 
     public function index()
     {
-        return view("create-task");
+        $nombretask = Task::count();
+        $allTask = DB::select('select * from tasks');
+        
+        return view("create-task", [
+            'nombre_task' => $nombretask,
+            'tasks' => $allTask,
+        ]);
+
+
     }
 
     public function store(Request $request)
     {
-//        dd($request);
+
 
         // Enrengistrement requête formulaire 
         // Prévoir controle
@@ -29,12 +38,8 @@ class myTaskController extends Controller
         $theTask->familleName = $request->familleName;
         $theTask->taskWhen = $request->periodicite;
         $theTask->taskDescription = $request->taskDescription ;
-       
-
-        //dd($theTask);
-        // Pour stocker la date de fin :
-        // - On peut utiliser Carbon pour convertir une string en date.    
         $theTask->save();
+
         // Redirection vers page d'accueil
         return redirect("/create-task")->with('message', 'La tache a bien été ajoutée');
     }

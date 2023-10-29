@@ -54,7 +54,21 @@
         </div>
     </form> <!-- Fin formulaire task -->
 
+
+    @isset($nombre_task)
+    <p> Nombre : {{ $nombre_task }} </p>
+
+    @endisset
   </div> <!-- Fin Div formulaire tache colmd6 -->
+</br> </br> </br> </br>
+  <div class="col-md-8">
+    <h2>Liste des Taches existantes :</h2>
+
+    @isset($allTask)
+    
+
+  </div>
+  
 
 
 

@@ -12,13 +12,13 @@
             <li class="nav-item">
               <a class="nav-link" href="{{  ('commande') }} ">
                 <span data-feather="file" class="align-text-bottom"></span>
-                Passer une commande
+                Créé une tâche
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{  ('produits') }} ">
                 <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                Les différents produits
+                Crée une famille 
               </a>
             </li>
             <li class="nav-item">

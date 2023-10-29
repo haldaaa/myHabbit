@@ -14,6 +14,9 @@ class FamilleControler extends Controller
      */
     public function index()
     {
+
+        $totalFamille = FamilleTask::count();
+        //dd($totalFamille);
         return view("create-family");
     }
 

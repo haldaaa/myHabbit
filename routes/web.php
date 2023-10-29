@@ -29,7 +29,7 @@ Route::get('/test', function () {
 
 
 
-Route::get('/create-task', [myTaskController::class, 'index']);
+Route::get('/create-task', [myTaskController::class, 'index']) ->name('monindex');
 Route::post('/create-task', [myTaskController::class, 'store']);
 
 Route::get('/create-family', [FamilleControler::class, 'index']);

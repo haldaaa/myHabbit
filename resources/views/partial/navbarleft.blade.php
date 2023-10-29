@@ -4,9 +4,9 @@
         <div class="position-sticky pt-3">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href=" {{ ('index') }}">
+              <a class="nav-link active" aria-current="page" href=" {{ route('monindex') }}">
                 <span data-feather="home" class="align-text-bottom"></span>
-                Dashboard / Index
+                Index
               </a>
             </li>
             <li class="nav-item">

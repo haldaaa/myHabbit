@@ -15,7 +15,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            // Exécutez la méthode mafonction ici
+            $controller = new \App\Http\Controllers\TaskController;
+            $controller->mafonction();
+        })->everyMinute();
     }
 
     /**

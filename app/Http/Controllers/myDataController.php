@@ -13,7 +13,27 @@ class myDataController extends Controller
      */
     public function index()
     {
-        return view("mydata");
+        $variable = rand(0, 20);
+        $couleurs = array('bleu', 'orange', 'vert', 'rose');
+        $couleurAleatoire = $couleurs[array_rand($couleurs)];
+        
+        dd($couleurAleatoire);
+
+
+        return view("mydata", [ 
+            'variable' => $variable,
+        ]);
+    }
+
+    public function generate()
+    {
+        $couleurs = array('bleu', 'orange', 'vert', 'rose');
+        $couleurAleatoire = $couleurs[array_rand($couleurs)];
+
+        return view('mydata', [
+            'mycouleur' => $couleurAleatoire,
+        ]);
+
     }
 
     /**

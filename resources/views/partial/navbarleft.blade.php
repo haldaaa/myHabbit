@@ -4,27 +4,27 @@
         <div class="position-sticky pt-3">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href=" {{ route('monindex') }}">
+              <a class="nav-link active" aria-current="page" href=" {{ route('myindex') }}">
                 <span data-feather="home" class="align-text-bottom"></span>
                 Index
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{  ('commande') }} ">
+              <a class="nav-link" href="{{  ('create-task') }} ">
                 <span data-feather="file" class="align-text-bottom"></span>
                 Créé une tâche
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{  ('produits') }} ">
+              <a class="nav-link" href="{{  ('create-family') }} ">
                 <span data-feather="shopping-cart" class="align-text-bottom"></span>
                 Crée une famille 
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{  ('client') }}" >
+              <a class="nav-link" href="{{  ('mydata') }}" >
                 <span data-feather="users" class="align-text-bottom"></span>
-                Liste des clients
+                Affichage des datas
               </a>
               <li class="nav-item">
                   <a class="nav-link" href="{{  ('commande-liste') }} ">

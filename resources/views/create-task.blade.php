@@ -64,8 +64,7 @@
   <div class="col-md-8">
     <h2>Liste des Taches existantes :</h2>
 
-    @isset($allTask)
-    
+   
 
   </div>
   

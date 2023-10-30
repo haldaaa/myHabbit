@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FamilleControler;
+use App\Http\Controllers\myDataController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\myTaskController;
 
@@ -16,23 +17,20 @@ use App\Http\Controllers\myTaskController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::get('/test', function () {
     return view('myindex');
-});
+})->name('myindex');
+
 
 
 /* Route : créé une tache - create-task.blade.php */
 
 
+Route::get('/data', [myDataController::class, 'index'])->name('mydata');
 
-Route::get('/taskindex', [myTaskController::class, 'index']);
 
-Route::get('/create-task', [myTaskController::class, 'index']) ->name('monindex');
+
+Route::get('/create-task', [myTaskController::class, 'index']) ->name('create-task');
 Route::post('/create-task', [myTaskController::class, 'store']);
 
-Route::get('/create-family', [FamilleControler::class, 'index']);
+Route::get('/create-family', [FamilleControler::class, 'index'])->name('create-family');
 Route::post('/create-family', [FamilleControler::class, 'store']);

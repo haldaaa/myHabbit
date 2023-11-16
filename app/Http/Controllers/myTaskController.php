@@ -14,6 +14,7 @@ class myTaskController extends Controller
         $nombretask = Task::count();
         $allTask = DB::select('select * from tasks');
         
+       // dd($allTask);
         return view("create-task", [
             'nombre_task' => $nombretask,
             'tasks' => $allTask,
@@ -44,5 +45,16 @@ class myTaskController extends Controller
         return redirect("/create-task")->with('message', 'La tache a bien été ajoutée');
     }
 
+
+
+    public function destroy($id)
+    {
+        // Suppression de la tâche
+        // Prévoir contrôle
+        
+        $tacheSupprimer = Task::findOrFail($id);
+        $tacheSupprimer -> delete();
+        return redirect('/create-task')->with('message','Tache supprimée !');
+    }
 
 }

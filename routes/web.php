@@ -27,6 +27,8 @@ Route::get('/', function () {
 
 Route::get('/data', [myDataController::class, 'index'])->name('mydata');
 
+Route::post('/data', [myDataController::class, 'index'])->name('mydataindex');
+
 
 
 Route::get('/create-task', [myTaskController::class, 'index']) ->name('create-task');

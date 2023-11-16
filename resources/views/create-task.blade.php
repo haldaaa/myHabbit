@@ -58,6 +58,16 @@
     @isset($nombre_task)
     <p> Nombre : {{ $nombre_task }} </p>
 
+    @foreach($tasks as $task)
+    <h2>{{$task->taskName}}</h2>
+    <p> Famille/Activité: {{$task->familleName}} </p>
+    <p> Périodicité: {{$task->taskWhen}} </p>
+    <p> Description: {{$task->taskDescription}} </p>
+    <button type="button" class="btn btn-primary">Delete</button>
+
+    <hr />
+    @endforeach
+
     @endisset
   </div> <!-- Fin Div formulaire tache colmd6 -->
 </br> </br> </br> </br>

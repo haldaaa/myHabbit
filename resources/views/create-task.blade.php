@@ -56,27 +56,23 @@
 
 
     @isset($nombre_task)
-    <p> Nombre : {{ $nombre_task }} </p>
+      <p> Nombre : {{ $nombre_task }} </p>
 
-    @foreach($tasks as $task)
-    <h2>{{$task->taskName}}</h2>
-    <p> Famille/Activité: {{$task->familleName}} </p>
-    <p> Périodicité: {{$task->taskWhen}} </p>
-    <p> Description: {{$task->taskDescription}} </p>
-    <button type="button" class="btn btn-primary">Delete</button>
+      @foreach($tasks as $task)
+        <h2>{{$task->taskName}}</h2>
+        <p> Id  : {{$task->id}}
+        <p> Famille/Activité: {{$task->familleName}} </p>
+        <p> Périodicité: {{$task->taskWhen}} </p>
+        <p> Description: {{$task->taskDescription}} </p>
+        <button type="button" class="btn btn-primary">Delete</button>
 
-    <hr />
-    @endforeach
+        <hr />
+      @endforeach
 
     @endisset
   </div> <!-- Fin Div formulaire tache colmd6 -->
 </br> </br> </br> </br>
-  <div class="col-md-8">
-    <h2>Liste des Taches existantes :</h2>
-
-   
-
-  </div>
+  
   
 
 

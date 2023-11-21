@@ -64,7 +64,14 @@
         <p> Famille/Activité: {{$task->familleName}} </p>
         <p> Périodicité: {{$task->taskWhen}} </p>
         <p> Description: {{$task->taskDescription}} </p>
-        <button type="button" class="btn btn-primary">Delete</button>
+    
+
+        <form action="{{ route('task.destroy', $task->id) }}" method="post">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+
 
         <hr />
       @endforeach

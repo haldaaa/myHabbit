@@ -49,9 +49,7 @@ class myTaskController extends Controller
 
     public function destroy($id)
     {
-        // Suppression de la tâche
-        // Prévoir contrôle
-        
+     
         $tacheSupprimer = Task::findOrFail($id);
         $tacheSupprimer -> delete();
         return redirect('/create-task')->with('message','Tache supprimée !');

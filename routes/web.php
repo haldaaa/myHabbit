@@ -33,7 +33,7 @@ Route::post('/data', [myDataController::class, 'index'])->name('mydataindex');
 
 Route::get('/create-task', [myTaskController::class, 'index']) ->name('create-task');
 Route::post('/create-task', [myTaskController::class, 'store']);
-Route::delete('/create-task/{$id}', [myTaskController::class, 'destroy'])->name('taches.destroy');
+Route::delete('/create-task/{id}', [myTaskController::class, 'destroy'])->name('task.destroy');
 
 
 Route::get('/create-family', [FamilleControler::class, 'index'])->name('create-family');

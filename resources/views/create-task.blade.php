@@ -56,7 +56,7 @@
 
 
     @isset($nombre_task)
-      <p> Nombre : {{ $nombre_task }} </p>
+      <p> Nombre totales de taches : {{ $nombre_task }} </p>
 
       @foreach($tasks as $task)
         <h2>{{$task->taskName}}</h2>

@@ -25,11 +25,13 @@ Route::get('/', function () {
 /* Route : créé une tache - create-task.blade.php */
 
 
+
 Route::get('/data', [myDataController::class, 'index'])->name('mydata');
 
 Route::post('/data', [myDataController::class, 'index'])->name('mydataindex');
 
 
+/* Create task */ 
 
 Route::get('/create-task', [myTaskController::class, 'index']) ->name('create-task');
 Route::post('/create-task', [myTaskController::class, 'store']);

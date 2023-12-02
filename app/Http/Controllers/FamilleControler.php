@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FamilleTask;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FamilleControler extends Controller
 {
@@ -16,8 +17,12 @@ class FamilleControler extends Controller
     {
 
         $totalFamille = FamilleTask::count();
-        //dd($totalFamille);
-        return view("create-family");
+        $allFamily = DB::select('select * from famille');
+
+       // dd($allFamily);
+        return view("create-family", [
+            'family' => $allFamily,
+        ]);
     }
 
 

@@ -13,11 +13,14 @@ class myTaskController extends Controller
     {
         $nombretask = Task::count();
         $allTask = DB::select('select * from tasks');
+        $allFamily = DB::select('select * from famille');
         
-       // dd($allTask);
+        
+        //dd($allFamily);
         return view("create-task", [
             'nombre_task' => $nombretask,
             'tasks' => $allTask,
+            'family' => $allFamily ,
         ]);
 
 
@@ -38,6 +41,7 @@ class myTaskController extends Controller
         $theTask->taskName = $request->taskName ;
         $theTask->familleName = $request->familleName;
         $theTask->taskWhen = $request->periodicite;
+        $theTask->quantite = $request->quantite;
         $theTask->taskDescription = $request->taskDescription ;
         $theTask->save();
 

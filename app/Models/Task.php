@@ -18,6 +18,7 @@ class Task extends Model
         'taskName',
         'familleName',
         'taskWhen',
+        'quantite' ,
         'description'
     
     ];

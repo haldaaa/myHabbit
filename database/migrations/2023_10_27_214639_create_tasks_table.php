@@ -13,6 +13,7 @@ class CreateTasksTable extends Migration
             $table->string('taskName');
             $table->string('familleName');
             $table->string('taskWhen');
+            $table->string('quantite');
             $table->text('taskDescription');
             $table->timestamps(); // Colonnes de création et de mise à jour automatiques
         });

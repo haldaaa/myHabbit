@@ -20,9 +20,10 @@
         <label for="familleName" class="col-4 col-form-label">Famille / Activité</label> 
         <div class="col-8">
           <select id="familleName" name="familleName" class="custom-select" aria-describedby="familleNameHelpBlock">
-            <option value="rabbit">Rabbit</option>
-            <option value="duck">Duck</option>
-            <option value="fish">Fish</option>
+          
+            @foreach($family as $myfamily)
+            <option value= "{{$family ->familleName }}" > {{ $family ->familleName}} </option>
+            @endforeach
           </select> 
           <span id="familleNameHelpBlock" class="form-text text-muted">Hygiène, sport, formation...</span>
         </div>
@@ -38,6 +39,13 @@
             </select>
           </div>
         </div>
+
+        <div class="form-group row">
+          <label for="taskWhen" class="col-4 col-form-label">Quentité</label> 
+            <div class="col-8">
+              <input type="text" class="form-control" name="quantite" placeholder="Entrez un nombre"> 
+            </div>
+          </div>
 
       <div class="form-group row">
         <label for="taskDescription" class="col-4 col-form-label">Description de la tache</label> 
@@ -63,6 +71,7 @@
         <p> Id  : {{$task->id}}
         <p> Famille/Activité: {{$task->familleName}} </p>
         <p> Périodicité: {{$task->taskWhen}} </p>
+        <p> Quantité : {{$task->quantite}} </p>
         <p> Description: {{$task->taskDescription}} </p>
     
 

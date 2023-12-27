@@ -22,7 +22,7 @@
           <select id="familleName" name="familleName" class="custom-select" aria-describedby="familleNameHelpBlock">
           
             @foreach($family as $myfamily)
-            <option value= "{{ $myfamily -> id }}" > {{ $myfamily ->nom}} </option>
+            <option value= "{{ $myfamily -> id }}" > {{ $myfamily ->familleName}} </option>
             @endforeach
           </select> 
           <span id="familleNameHelpBlock" class="form-text text-muted">Hygiène, sport, formation...</span>

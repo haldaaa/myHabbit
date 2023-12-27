@@ -4,6 +4,7 @@ use App\Http\Controllers\FamilleControler;
 use App\Http\Controllers\myDataController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\myTaskController;
+use App\Http\Controllers\mySheetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Route::get('/', function () {
 
 /* Route : créé une tache - create-task.blade.php */
 
-
+Route::get('/google', [mySheetController::class, 'index']);
 
 Route::get('/data', [myDataController::class, 'index'])->name('mydata');
 

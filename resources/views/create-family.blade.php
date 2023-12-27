@@ -40,7 +40,7 @@
 
         @foreach($family as $myfamily)
           <p> Id : {{ $myfamily->id }} </p>  
-          <h2>{{$myfamily->nom}}</h2>
+          <h2>{{$myfamily->familleName}}</h2>
           <p>{{$myfamily->familleDescription}}</p>
 
           @endforeach

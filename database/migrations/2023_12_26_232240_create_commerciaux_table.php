@@ -16,6 +16,7 @@ class CreateCommerciauxTable extends Migration
         Schema::create('Commerciaux', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            
             $table->text('nomCommercial');
             $table->text('ageCommercial');
             $table->text('sexeCommercial');

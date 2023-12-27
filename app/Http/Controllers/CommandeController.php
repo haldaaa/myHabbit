@@ -3,27 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Clients;
 
-
-class ClientController extends Controller
+class CommandeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function generateClients()
-    {
-
-        App\Models\Clients::factory(10)->create();
-    
-          
-        return redirect()->back()->with('status', '10 nouveaux clients ont été créés.');
-    }
-
-     
     public function index()
     {
         //

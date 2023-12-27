@@ -20,6 +20,11 @@ class Commerciaux extends Model
         'nombreCommande' ,
 
     ];
+
+    public function commandes()
+    {
+        return $this->hasMany(Commande::class, 'commercialId');
+    }
 }
 
 

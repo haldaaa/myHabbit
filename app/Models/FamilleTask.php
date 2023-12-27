@@ -15,7 +15,5 @@ class FamilleTask extends Model
     protected $fillable = [
         'familleName' ,
         'description' ,
-
-
     ];
 }

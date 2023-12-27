@@ -9,12 +9,16 @@ class Produits extends Model
 {
     use HasFactory;
     protected $table = "produits";
-    protected $primary_key = "id";
+    protected $primaryKey = "id"; // Correction ici
 
     protected $fillable = [
-        'nomProduit' ,
-        'provenanceProduit' ,
-        'totalVendu' ,
-    
+        'nomProduit',
+        'provenanceProduit',
+        'totalVendu',
     ];
+
+    public function detailCommandes()
+    {
+        return $this->hasMany(DetailCommande::class, 'produit_id');
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
 use App\Models\Clients;
 
@@ -17,7 +18,7 @@ class ClientController extends Controller
     public function generateClients()
     {
 
-        App\Models\Clients::factory(10)->create();
+        Clients::factory()->count(10)->create();
     
           
         return redirect()->back()->with('status', '10 nouveaux clients ont été créés.');

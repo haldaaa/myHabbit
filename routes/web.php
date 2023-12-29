@@ -5,6 +5,7 @@ use App\Http\Controllers\myDataController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\myTaskController;
 use App\Http\Controllers\mySheetController;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,12 @@ Route::get('/google', [mySheetController::class, 'index']);
 Route::get('/data', [myDataController::class, 'index'])->name('mydata');
 
 Route::post('/data', [myDataController::class, 'index'])->name('mydataindex');
+
+
+
+Route::get('/generate', [ClientController::class, 'generateClients']);
+
+
 
 
 /* Create task */ 

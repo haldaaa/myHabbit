@@ -16,9 +16,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{  ('create-family') }} ">
+              <a class="nav-link" href="{{  route('clientindex') }} ">
                 <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                Crée une famille 
+                Crée clients 
               </a>
             </li>
             <li class="nav-item">

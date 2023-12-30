@@ -14,11 +14,11 @@ class ClientsFactory extends Factory
     public function definition()
     {
         return [
-            'nomClient' => $faker->name,
-            'ageClient' => $faker->numberBetween(18, 80),
-            'sexeClient' => $faker->randomElement(['Homme', 'Femme', 'Autre']),
-            'paysClient' => $faker->country,
-            'villeClient' => $faker->city,
+            'nomClient' => $this->faker->name(),
+            'ageClient' => $this->faker->numberBetween(18, 80),
+            'sexeClient' => $this->faker->randomElement(['Homme', 'Femme', 'Autre']),
+            'paysClient' => $this->faker->country(),
+            'villeClient' => $this->faker->city(),
             'commandeClient' => 0,
         ];
     }

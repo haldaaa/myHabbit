@@ -39,6 +39,16 @@ Route::get('/generate', [ClientController::class, 'generateClients']);
 
 
 
+/* Clients */ 
+
+
+Route::get('/client', function() {
+    return view('client'); // Assurez-vous que la vue maPage existe
+})->name('clientindex');
+
+
+
+
 /* Create task */ 
 
 Route::get('/create-task', [myTaskController::class, 'index']) ->name('create-task');

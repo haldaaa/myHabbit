@@ -15,14 +15,14 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function generateClients()
-    {
-
-        Clients::factory()->count(10)->create();
-    
-          
-        return redirect()->back()->with('status', '10 nouveaux clients ont été créés.');
-    }
+     public function generateClients()
+     {
+         Clients::factory()->count(5)->create();
+         
+         // Redirige vers /maPage avec une notification de succès
+         return redirect('/caca')->with('status', '10 nouveaux clients ont été créés avec succès.');
+     }
+     
 
      
     public function index()

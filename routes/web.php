@@ -34,17 +34,15 @@ Route::post('/data', [myDataController::class, 'index'])->name('mydataindex');
 
 
 
-Route::get('/generate', [ClientController::class, 'generateClients']);
+Route::get('/generate', [ClientController::class, 'generateClients'])->name('generateClientPage');
 
 
 
 
 /* Clients */ 
 
+Route::get('/client', [ClientController::class, 'index'])->name('clientindex');
 
-Route::get('/client', function() {
-    return view('client'); // Assurez-vous que la vue maPage existe
-})->name('clientindex');
 
 
 

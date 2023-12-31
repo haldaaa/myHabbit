@@ -17,7 +17,7 @@ class CreateProduitsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->text('nomProduit');
-            $table->text('provenanceProduit');
+            $table->integer('prix');
             $table->integer('totalVendu');
             
         });

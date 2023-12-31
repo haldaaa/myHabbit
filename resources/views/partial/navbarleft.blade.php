@@ -27,13 +27,13 @@
                 Affichage des datas
               </a>
               <li class="nav-item">
-                  <a class="nav-link" href="{{  ('commande-liste') }} ">
+                  <a class="nav-link" href="{{  route('produitindex') }} ">
                     <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                    Listes des commandes
+                    Listes des produits
                   </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{  ('liste-commerciaux') }}">
+              <a class="nav-link" href="{{  route('commerciauxindex') }}">
                 <span data-feather="bar-chart-2" class="align-text-bottom"></span>
                 Liste des commerciaux
               </a>

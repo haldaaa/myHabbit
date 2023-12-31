@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\myTaskController;
 use App\Http\Controllers\mySheetController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CommerciauxController;
+use App\Http\Controllers\ProduitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,16 +36,32 @@ Route::post('/data', [myDataController::class, 'index'])->name('mydataindex');
 
 
 
+
+            /* Produit */ 
+
+Route::get('/produit,' , [ProduitController::class, 'index'])->name('produitindex');
+
+Route::get('/produitgenerate', [ProduitController::class, 'generateProduit'])->name('generateProduitPage');
+
+
+
+            /* Clients */ 
+
+Route::get('/client', [ClientController::class, 'index'])->name('clientindex');
+
+Route::delete('/client/{id}' , [ClientController::class, 'destroy'])->name('client.destroy');
+
 Route::get('/generate', [ClientController::class, 'generateClients'])->name('generateClientPage');
 
 
 
+            /* Commerciaux */
 
-/* Clients */ 
+Route::get('/commerciaux', [CommerciauxController::class, 'index'])->name('commerciauxindex');
 
-Route::get('/client', [ClientController::class, 'index'])->name('clientindex');
+Route::delete('/commerciaux/{id}' , [CommerciauxController::class, 'destroy'])->name('commerciaux.destroy'); 
 
-
+Route::get('/commerciauxgenerate' , [CommerciauxController::class, 'generateCommerciaux'])->name('generateCommerciauxPage');
 
 
 

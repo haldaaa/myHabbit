@@ -19,14 +19,14 @@
 
     @if($clients->isNotEmpty())
     <table class="table table-striped">
-        <thead class="thread-light">
+        <thead class="thead-light">
             <tr>
                 <th scope="col">Nom</th>
-                <th>Age</th>
-                <th>Sexe</th>
-                <th>Pays</th>
-                <th>Ville</th>
-                <!-- Ajoutez d'autres colonnes au besoin -->
+                <th scope="col">Age</th>
+                <th scope="col">Sexe</th>
+                <th scope="col">Pays</th>
+                <th scope="col">Ville</th>
+                <th scope="col">Actions</th> <!-- Colonne pour les actions -->
             </tr>
         </thead>
         <tbody>
@@ -37,7 +37,14 @@
                     <td>{{ $client->sexeClient }}</td>
                     <td>{{ $client->paysClient }}</td>
                     <td>{{ $client->villeClient }}</td>
-                    <!-- Autres données du client -->
+                    <td>
+                        <!-- Formulaire de suppression -->
+                        <form action="{{ route('client.destroy', $client->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce client ?');">Supprimer</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
@@ -45,6 +52,7 @@
 @else
     <p>Aucun client à afficher.</p>
 @endif
+
 </div>
 
 

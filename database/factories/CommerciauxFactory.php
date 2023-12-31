@@ -14,11 +14,11 @@ class CommerciauxFactory extends Factory
     public function definition()
     {
         return [
-            'nomCommercial' => $faker->name,
-            'ageCommercial' => $faker->numberBetween(18, 80),
-            'sexeCommercial' => $faker->randomElement(['Homme', 'Femme', 'Autre']),
-            'paysCommercial' => $faker->country,
-            'villeCommercial' => $faker->city,
+            'nomCommercial' => $this->faker->name(),
+            'ageCommercial' => $this->faker->numberBetween(18, 80),
+            'sexeCommercial' => $this->faker->randomElement(['Homme', 'Femme', 'Autre']),
+            'paysCommercial' => $this->faker->country(),
+            'villeCommercial' => $this->faker->city(),
             'nombreCommande' => 0,
         ];
     }

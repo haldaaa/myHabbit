@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
-use App\Models\Clients;
+use App\Models\Produits;
 
-
-class ClientController extends Controller
+class ProduitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,22 +13,20 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function generateClients()
-     {
-         Clients::factory()->count(10)->create();
+    public function generateProduit()
+    {
+        Produits::factory()->count(2)->create();
          
-         // Redirige vers /maPage avec une notification de succès
-         return redirect('/client')->with('status', '10 nouveaux clients ont été créés avec succès.');
+        // Redirige vers /maPage avec une notification de succès
+        return redirect('/produit')->with('status', '10 nouveaux produit ont été créés avec succès.');
      }
      
 
-     
+
+
     public function index()
     {
-        $clients = Clients::all(); // Récupérer tous les clients
-
-        // Passer les clients à la vue
-        return view('/client', compact('clients'));
+        return view('/produit');
     }
 
     /**
@@ -96,9 +92,6 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        $client = Clients::findOrFail($id);
-        $client->delete();
-
-        return redirect('/client')->with('status', 'Client supprimé avec succès.');
+        //
     }
 }

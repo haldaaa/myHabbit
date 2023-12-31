@@ -14,8 +14,8 @@ class ProduitFactory extends Factory
     public function definition()
     {
         return [
-            'nomProduit' => $faker->word,
-            'provenanceProduit' => $faker->country,
+            'nomProduit' => $this->faker->words('Planche' , 'Ferraille' ),
+            'prix' => $this->faker->numberBetween(10, 50),
             'totalVendu' => 0,
         ];
     }

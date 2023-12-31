@@ -11,6 +11,18 @@
         </div>
     @endif
     <p> Page Produit </p>
+    @if(session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
+@if($errors->any())
+    <div class="alert alert-danger">
+        {{ $errors->first() }}
+    </div>
+@endif
+
 
     <a href="{{ route('generateProduitPage') }}">Générer des produits ici</a>
 </div>

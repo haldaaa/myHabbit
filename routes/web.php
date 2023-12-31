@@ -39,7 +39,7 @@ Route::post('/data', [myDataController::class, 'index'])->name('mydataindex');
 
             /* Produit */ 
 
-Route::get('/produit,' , [ProduitController::class, 'index'])->name('produitindex');
+Route::get('/produit' , [ProduitController::class, 'index'])->name('produitindex');
 
 Route::get('/produitgenerate', [ProduitController::class, 'generateProduit'])->name('generateProduitPage');
 
@@ -50,6 +50,8 @@ Route::get('/produitgenerate', [ProduitController::class, 'generateProduit'])->n
 Route::get('/client', [ClientController::class, 'index'])->name('clientindex');
 
 Route::delete('/client/{id}' , [ClientController::class, 'destroy'])->name('client.destroy');
+
+Route::delete('/clients/destroy-all', [ClientController::class, 'destroyAll'])->name('clients.destroy.all');
 
 Route::get('/generate', [ClientController::class, 'generateClients'])->name('generateClientPage');
 

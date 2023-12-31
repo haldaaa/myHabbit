@@ -18,7 +18,13 @@
     <a href="{{ route('generateClientPage') }}">Générer des clients ici</a>
 
     @if($clients->isNotEmpty())
+
     <table class="table table-striped">
+        <form action="{{ route('clients.destroy.all') }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-warning" onclick="return confirm('Êtes-vous sûr de vouloir supprimer tous les clients ?');">Supprimer Tous les Clients</button>
+        </form>
         <thead class="thead-light">
             <tr>
                 <th scope="col">Nom</th>

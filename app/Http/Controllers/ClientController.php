@@ -23,6 +23,13 @@ class ClientController extends Controller
          return redirect('/client')->with('status', '10 nouveaux clients ont été créés avec succès.');
      }
      
+     public function destroyAll()
+    {
+        Clients::query()->delete(); // Supprime tous les clients
+
+        return redirect('/client')->with('status', 'Tous les clients ont été supprimés.');
+    }
+
 
      
     public function index()

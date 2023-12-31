@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ProduitFactory extends Factory
+class ProduitsFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,7 +14,7 @@ class ProduitFactory extends Factory
     public function definition()
     {
         return [
-            'nomProduit' => $this->faker->words('Planche' , 'Ferraille' ),
+            'nomProduit' => $this->faker->word(),
             'prix' => $this->faker->numberBetween(10, 50),
             'totalVendu' => 0,
         ];

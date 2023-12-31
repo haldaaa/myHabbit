@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produits;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProduitController extends Controller
 {
@@ -15,10 +16,11 @@ class ProduitController extends Controller
 
     public function generateProduit()
     {
+        
         Produits::factory()->count(2)->create();
          
         // Redirige vers /maPage avec une notification de succès
-        return redirect('/produit')->with('status', '10 nouveaux produit ont été créés avec succès.');
+        return redirect('/produit')->with('status', '2 nouveaux produit ont été créés avec succès.');
      }
      
 

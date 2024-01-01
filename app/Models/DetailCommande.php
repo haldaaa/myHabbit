@@ -25,9 +25,9 @@ class DetailCommande extends Model
         return $this->belongTo(Commande::class, 'commande_id');
     }
 
-    public function produit()
+    public function produits()
     {
-        return $this->belongsTo(Produit::class, 'produit_id');
+        return $this->belongsTo(Produits::class, 'produit_id');
     }
 
     

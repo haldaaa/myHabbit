@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
 use App\Models\Clients;
 
+use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
@@ -25,7 +26,9 @@ class ClientController extends Controller
      
      public function destroyAll()
     {
-        Clients::query()->delete(); // Supprime tous les clients
+        DB::statement("SET foreign_key_checks=0");
+        Clients::query()->deledte(); // Supprime tous les clients
+        DB::statement("SET foreign_key_checks=1");
 
         return redirect('/client')->with('status', 'Tous les clients ont été supprimés.');
     }

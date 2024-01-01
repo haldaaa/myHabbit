@@ -18,8 +18,6 @@ class CommandeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    
-
      public function generateRandomCommande()
     {
         $randomCommandeCount = rand(1, 4);
@@ -113,7 +111,10 @@ class CommandeController extends Controller
      */
     public function show($id)
     {
-        //
+        $commande = Commande::with(['commerciaux', 'clients', 'detailcommande.produits']) // Assurez-vous que ces relations sont correctes
+        ->findOrFail($id);
+        //dd($commande);
+        return view('commandedetail', compact('commande'));
     }
 
     /**

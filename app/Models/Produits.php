@@ -21,4 +21,9 @@ class Produits extends Model
     {
         return $this->hasMany(DetailCommande::class, 'produit_id');
     }
+
+    public function commandes()
+    {
+        return $this->belongsToMany(Commande::class);
+    }
 }

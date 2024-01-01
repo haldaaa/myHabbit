@@ -22,9 +22,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{  ('mydata') }}" >
+              <a class="nav-link" href="{{  route('commandeindex') }}" >
                 <span data-feather="users" class="align-text-bottom"></span>
-                Affichage des datas
+                Créé une commande
               </a>
               <li class="nav-item">
                   <a class="nav-link" href="{{  route('produitindex') }} ">

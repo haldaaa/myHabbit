@@ -19,7 +19,7 @@ class Clients extends Model
         'villeClient' ,
         'commandeClient' ,
     ];
-    public function commandes()
+    public function commande()
     {
         return $this->hasMany(Commande::class, 'clientId');
     }

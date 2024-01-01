@@ -9,7 +9,8 @@ class Commerciaux extends Model
 {
     use HasFactory;
     protected $table = "commerciaux";
-    protected $primary_key = "id";
+    protected $primaryKey = "id";
+
 
     protected $fillable = [
         'nomCommercial' ,
@@ -25,6 +26,7 @@ class Commerciaux extends Model
     {
         return $this->hasMany(Commande::class, 'commercialId');
     }
+    
 }
 
 

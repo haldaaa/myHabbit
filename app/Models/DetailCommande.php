@@ -9,7 +9,7 @@ class DetailCommande extends Model
 {
     use HasFactory;
 
-    protected $table  = 'detailCommande';
+    protected $table  = 'detailcommande';
 
     protected $fillable = [
         'commande_id',

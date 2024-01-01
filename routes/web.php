@@ -8,6 +8,7 @@ use App\Http\Controllers\mySheetController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommerciauxController;
 use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\CommandeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,11 +36,24 @@ Route::get('/data', [myDataController::class, 'index'])->name('mydata');
 Route::post('/data', [myDataController::class, 'index'])->name('mydataindex');
 
 
+            /* Commande */
+
+Route::get('/commande', [CommandeController::class, 'index'])->name('commandeindex');
+
+Route::delete('/commande/{id}', [CommandeController::class, 'destroy'])->name('commande.destroy');
+
+Route::get('/generate-random-commande', [CommandeController::class, 'generateRandomCommande'])->name('generate.random.commande');
+
+Route::get('/commandes/{id}/details', [CommandeController::class, 'show'])->name('commande.details');
+
+
 
 
             /* Produit */ 
 
 Route::get('/produit' , [ProduitController::class, 'index'])->name('produitindex');
+
+Route::delete('/produit/{id}' , [ProduitController::class, 'destroy'])->name('produit.destroy');
 
 Route::get('/produitgenerate', [ProduitController::class, 'generateProduit'])->name('generateProduitPage');
 

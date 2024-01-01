@@ -28,7 +28,10 @@ class ProduitController extends Controller
 
     public function index()
     {
-        return view('/produit');
+
+        $produits = Produits::all();
+ 
+        return view('/produit', compact('produits'));
     }
 
     /**
@@ -94,6 +97,10 @@ class ProduitController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $produit = Produits::findOrFail($id);
+        $produit->delete();
+    
+        return redirect()->back()->with('status', 'Produit supprimé avec succès.');
     }
+    
 }

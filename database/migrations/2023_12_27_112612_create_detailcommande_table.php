@@ -18,7 +18,7 @@ class CreateDetailcommandeTable extends Migration
             $table->timestamps();
             
             $table->unsignedBigInteger('commande_id');
-            $table->foreign('commande_id')->references('id')->on('commandes');
+            $table->foreign('commande_id')->references('id')->on('commande');
     
             $table->unsignedBigInteger('produit_id');
             $table->foreign('produit_id')->references('id')->on('produits');

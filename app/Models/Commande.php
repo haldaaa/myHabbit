@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Commande extends Model
 {
     use HasFactory;
-    protected $table = "commandes";
-    protected $primary_key = "id" ;
+    protected $table = "commande";
+    protected $primaryKey = "id" ;
 
     protected $fillable = [
         'commercialId',
@@ -19,17 +19,23 @@ class Commande extends Model
 
     public function commerciaux()
     {
-        return $this->belongTo(Commerciaux::Class);
+        return $this->belongsTo(Commerciaux::class, 'commercialId');
     }
+    
 
     public function clients()
     {
-        return $this->belongTo(Clients::class);
+        return $this->belongsTo(Clients::class, 'clientId');
     }
-
-    public function detailCommande()
+    
+    public function detailcommande()
     {
         return $this->hasMany(DetailCommande::class);
+    }
+
+    public function produits() 
+    {
+        return $this->belongsToMany(Produit::class);
     }
 
 }

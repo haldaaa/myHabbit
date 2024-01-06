@@ -8,6 +8,8 @@ use App\Models\Clients;
 
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\Log;
+
 class ClientController extends Controller
 {
     /**
@@ -18,17 +20,28 @@ class ClientController extends Controller
 
      public function generateClients()
      {
-         Clients::factory()->count(10)->create();
-         
-         // Redirige vers /maPage avec une notification de succès
-         return redirect('/client')->with('status', '10 nouveaux clients ont été créés avec succès.');
+         try {
+             $nombreClients = 10; // Nombre de clients à créer
+             Clients::factory()->count($nombreClients)->create();
+     
+             Log::info('Clients créés avec succès', ['nombre' => $nombreClients]);
+     
+             // Redirection avec une notification de succès
+             return redirect('/client')->with('status', $nombreClients . ' nouveaux clients ont été créés avec succès.');
+         } catch (\Exception $e) {
+             Log::error('Erreur lors de la création des clients', ['message' => $e->getMessage()]);
+     
+             // Redirection avec un message d'erreur
+             return redirect('/client')->withErrors('Erreur lors de la création des clients.');
+         }
      }
      
      public function destroyAll()
     {
-        DB::statement("SET foreign_key_checks=0");
-        Clients::query()->deledte(); // Supprime tous les clients
-        DB::statement("SET foreign_key_checks=1");
+    
+
+        Clients::query()->delete(); // Supprime tous les clients
+      
 
         return redirect('/client')->with('status', 'Tous les clients ont été supprimés.');
     }

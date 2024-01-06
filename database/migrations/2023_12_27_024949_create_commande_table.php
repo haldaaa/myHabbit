@@ -22,7 +22,7 @@ class CreateCommandeTable extends Migration
 
 
             $table->unsignedBigInteger('clientId');
-            $table->foreign('clientId')->references('id')->on('clients');
+            $table->foreign('clientId')->references('id')->on('clients')->onDelete('cascade');
             
         });
     }

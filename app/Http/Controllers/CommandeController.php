@@ -22,18 +22,32 @@ class CommandeController extends Controller
 
 
 
+
      public function destroyAll()
-    {
-
-        Commande::query()->delete(); // Supprime toutes les commandes
+     {
+        try {
+            // Supprime toutes les commandes
+            Commande::query()->delete();
     
-
-        return redirect('/commande')->with('status', 'Toutes les commandes ont été supprimés.');
-    }
+            // Log réussite
+            Log::channel('myapp_log')->info('Toutes les commandes ont été supprimées.');
+    
+            return redirect('/commande')->with('status', 'Toutes les commandes ont été supprimées.');
+        } catch (\Exception $e) {
+            // Log en cas d'erreur
+            Log::channel('myapp_log')->error('Erreur lors de la suppression des commandes: ' . $e->getMessage());
+    
+            return redirect('/commande')->withErrors('Erreur lors de la suppression des commandes.');
+        }
+     }
+     
 
 
      public function generateRandomCommande()
-    {
+    {        
+      
+
+
         $randomCommandeCount = rand(1, 4);
 
         Log::channel('myapp_log')->info('Nombre de commandes générées : ' . $randomCommandeCount);
@@ -55,25 +69,27 @@ class CommandeController extends Controller
             $randomProducts = Produits::inRandomOrder()->limit($randomProductCount)->get();
 
             foreach ($randomProducts as $produit) 
+            
             {
-            $quantite = rand(1, 99);
+                $quantite = rand(1, 99);
 
-            // Création du détail de la commande
-            $detailCommande = new Detailcommande();
-            $detailCommande->commande_id = $commande->id;
-            $detailCommande->produit_id = $produit->id;
-            $detailCommande->quantite = $quantite;
-            $detailCommande->prixProduit = $produit->prix;
-            $detailCommande->sous_total = $produit->prix * $quantite;
-            $detailCommande->save();
+                // Création du détail de la commande
+                $detailCommande = new Detailcommande();
+                $detailCommande->commande_id = $commande->id;
+                $detailCommande->produit_id = $produit->id;
+                $detailCommande->quantite = $quantite;
+                $detailCommande->prixProduit = $produit->prix;
+                $detailCommande->sous_total = $produit->prix * $quantite;
+                $detailCommande->save();
 
-            // Mise à jour du nombre total vendu pour le produit
-            $produit->totalVendu += $quantite;
-            $produit->save();
+                // Mise à jour du nombre total vendu pour le produit
+                $produit->totalVendu += $quantite;
+                $produit->save();
 
-            Log::channel('myapp_log')->info('Commande numero : ' . $detailCommande->id  . '.' .  ' Produit ajouté : ' . $produit->nomProduit . ', Quantité : ' . $quantite);
+                Log::channel('myapp_log')->info('Commande numero : ' . $detailCommande->id  . '.' .  ' Produit ajouté : ' . $produit->nomProduit . ', Quantité : ' . $quantite);
 
             }
+
 
             // Mise à jour des informations du commercial
             $randomCommercial->nombreCommande++;

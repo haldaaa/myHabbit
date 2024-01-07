@@ -28,6 +28,12 @@
                     <th scope="col">Nom du Client</th>
                     <th scope="col">Détails</th>
                 </tr>
+                <form action="{{ route('commande.destroy.all') }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Supprimer toutes les commandes</button>
+                </form>
+                
             </thead>
             <tbody>
                 @foreach($commandes as $commande)

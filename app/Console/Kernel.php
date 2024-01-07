@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Controller\CommandeController;
+
 
 class Kernel extends ConsoleKernel
 {
@@ -15,12 +17,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
-            // Exécutez la méthode mafonction ici
-            $controller = new \App\Http\Controllers\TaskController;
-            $controller->mafonction();
-        })->everyMinute();
+        $schedule->command('generate:commande')->everyTwoMinutes();
     }
+    
 
     /**
      * Register the commands for the application.

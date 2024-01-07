@@ -153,4 +153,14 @@ class CommandeController extends Controller
 
         return redirect('/commande')->with('status', 'Commande  supprimé avec succès (et Fabrice).');
     }
+
+    public function destroyAll()
+    {
+    
+
+        Commande::query()->delete(); // Supprime tous les clients
+      
+
+        return redirect('/commande')->with('status', 'Toutes les commandes ont été supprimés.');
+    }
 }

@@ -12,7 +12,7 @@
     <p><strong>Nom du Commercial :</strong> {{ $commande->commerciaux->nomCommercial }}</p> {{-- Assurez-vous que 'nom' est correct --}}
     <p><strong>Nom du Client :</strong> {{ $commande->clients->nomClient }}</p>
 
-    <h2>Produits Commandés</h2>
+    <h1>Produits Commandés</h1>
     <ul>
         @foreach($commande->detailCommande as $detail)
             <li>{{ $detail->produits->nomProduit }}  -  Quantité : {{ $detail->quantite }} , Total : {{ $detail->sous_total }}€ ,  Prix unitaire : {{ $detail->prixProduit}}€ .</li> 

@@ -42,6 +42,9 @@ Route::get('/commande', [CommandeController::class, 'index'])->name('commandeind
 
 Route::delete('/commande/{id}', [CommandeController::class, 'destroy'])->name('commande.destroy');
 
+Route::delete('/commande/destroy-all', [CommandeController::class, 'destroyAll'])->name('commande.destroy.all');
+
+
 Route::get('/generate-random-commande', [CommandeController::class, 'generateRandomCommande'])->name('generate.random.commande');
 
 Route::get('/commandes/{id}/details', [CommandeController::class, 'show'])->name('commande.details');

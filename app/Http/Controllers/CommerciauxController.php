@@ -98,4 +98,14 @@ class CommerciauxController extends Controller
 
         return redirect('/commerciaux')->with('status', 'Commercial supprimé avec succès (et Fabrice).');
     }
+
+    public function destroyAll()
+    {
+    
+
+        Commerciaux::query()->delete(); // Supprime tous les commerciaux
+      
+
+        return redirect('/commerciaux')->with('status', 'Tous les commerciaux ont été supprimés.');
+    }
 }

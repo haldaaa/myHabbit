@@ -42,7 +42,8 @@ Route::get('/commande', [CommandeController::class, 'index'])->name('commandeind
 
 Route::delete('/commande/{id}', [CommandeController::class, 'destroy'])->name('commande.destroy');
 
-Route::delete('/commande/destroy-all', [CommandeController::class, 'destroyAll'])->name('commande.destroy.all');
+Route::delete('/commandes/destroy-all', [CommandeController::class, 'destroyAll'])->name('commande.destroy.all');
+
 
 
 Route::get('/generate-random-commande', [CommandeController::class, 'generateRandomCommande'])->name('generate.random.commande');
@@ -79,6 +80,8 @@ Route::get('/generate', [ClientController::class, 'generateClients'])->name('gen
 Route::get('/commerciaux', [CommerciauxController::class, 'index'])->name('commerciauxindex');
 
 Route::delete('/commerciaux/{id}' , [CommerciauxController::class, 'destroy'])->name('commerciaux.destroy'); 
+
+Route::delete('/commerciauxx/destroy-all', [CommerciauxController::class, 'destroyAll'])->name('commerciaux.destroy.all');
 
 Route::get('/commerciauxgenerate' , [CommerciauxController::class, 'generateCommerciaux'])->name('generateCommerciauxPage');
 

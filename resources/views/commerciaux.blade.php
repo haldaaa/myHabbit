@@ -18,6 +18,11 @@
 
     @if($commerciaux->isNotEmpty())
     <table class="table table-striped">
+        <form action="{{ route('commerciaux.destroy.all') }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-warning" onclick="return confirm('Êtes-vous sûr de vouloir supprimer tous les commerciaux ?');">Supprimer Tous les commerciaux</button>
+        </form>
         <thead class="thead-light">
             <tr>
                 <th scope="col">Nom</th>

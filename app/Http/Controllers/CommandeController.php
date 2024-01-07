@@ -10,6 +10,8 @@ use App\Models\Clients;
 use App\Models\Commande;
 use App\Models\DetailCommande;
 
+use Illuminate\Support\Facades\Log;
+
 class CommandeController extends Controller
 {
     /**
@@ -18,9 +20,23 @@ class CommandeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
+
+     public function destroyAll()
+    {
+
+        Commande::query()->delete(); // Supprime toutes les commandes
+    
+
+        return redirect('/commande')->with('status', 'Toutes les commandes ont été supprimés.');
+    }
+
+
      public function generateRandomCommande()
     {
         $randomCommandeCount = rand(1, 4);
+
+        Log::channel('myapp_log')->info('Nombre de commandes générées : ' . $randomCommandeCount);
 
         for ($i = 1; $i <= $randomCommandeCount; $i++)
         {
@@ -54,7 +70,10 @@ class CommandeController extends Controller
             // Mise à jour du nombre total vendu pour le produit
             $produit->totalVendu += $quantite;
             $produit->save();
-        }
+
+            Log::channel('myapp_log')->info('Commande numero : ' . $detailCommande->id  . '.' .  ' Produit ajouté : ' . $produit->nomProduit . ', Quantité : ' . $quantite);
+
+            }
 
             // Mise à jour des informations du commercial
             $randomCommercial->nombreCommande++;
@@ -65,13 +84,13 @@ class CommandeController extends Controller
             $randomClient->save();
     }
 
-    // Récupérer toutes les commandes pour les afficher
-    $liste = Commande::all();
-    return redirect()->back()->with('status', $randomCommandeCount . ' commandes générée avec succès.');
+        // Récupérer toutes les commandes pour les afficher
+        $liste = Commande::all();
+        return redirect()->back()->with('status', $randomCommandeCount . ' commandes générée avec succès.');
 
-    //return view('commande.commande-liste', ['liste' => $liste]);
+        //return view('commande.commande-liste', ['liste' => $liste]);
     
-}
+    }   
 
     
     public function index()
@@ -154,13 +173,5 @@ class CommandeController extends Controller
         return redirect('/commande')->with('status', 'Commande  supprimé avec succès (et Fabrice).');
     }
 
-    public function destroyAll()
-    {
-    
-
-        Commande::query()->delete(); // Supprime tous les clients
-      
-
-        return redirect('/commande')->with('status', 'Toutes les commandes ont été supprimés.');
-    }
+   
 }

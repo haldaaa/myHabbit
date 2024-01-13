@@ -9,6 +9,8 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommerciauxController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\CommandeController;
+use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,26 @@ Route::get('/google', [mySheetController::class, 'index']);
 Route::get('/data', [myDataController::class, 'index'])->name('mydata');
 
 Route::post('/data', [myDataController::class, 'index'])->name('mydataindex');
+
+/* Create task */ 
+
+Route::get('/create-task', [myTaskController::class, 'index']) ->name('create-task');
+Route::post('/create-task', [myTaskController::class, 'store']);
+Route::delete('/create-task/{id}', [myTaskController::class, 'destroy'])->name('task.destroy');
+
+
+Route::get('/create-family', [FamilleControler::class, 'index'])->name('create-family');
+Route::post('/create-family', [FamilleControler::class, 'store']);
+
+
+
+
+
+
+
+Route::get('/dashboard' , [DashboardController::class, 'index'])->name('dashboardindex'); 
+
+
 
 
             /* Commande */
@@ -86,13 +108,3 @@ Route::delete('/commerciauxx/destroy-all', [CommerciauxController::class, 'destr
 Route::get('/commerciauxgenerate' , [CommerciauxController::class, 'generateCommerciaux'])->name('generateCommerciauxPage');
 
 
-
-/* Create task */ 
-
-Route::get('/create-task', [myTaskController::class, 'index']) ->name('create-task');
-Route::post('/create-task', [myTaskController::class, 'store']);
-Route::delete('/create-task/{id}', [myTaskController::class, 'destroy'])->name('task.destroy');
-
-
-Route::get('/create-family', [FamilleControler::class, 'index'])->name('create-family');
-Route::post('/create-family', [FamilleControler::class, 'store']);

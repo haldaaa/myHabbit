@@ -45,75 +45,74 @@ class CommandeController extends Controller
 
      public function generateRandomCommande()
     {        
-      
+        try
+        { // ICI
 
-
-        $randomCommandeCount = rand(1, 4);
-
-        Log::channel('myapp_log')->info('Nombre de commandes générées : ' . $randomCommandeCount);
-
-        for ($i = 1; $i <= $randomCommandeCount; $i++)
-        {
-            // Sélection aléatoire d'un commercial et d'un client
-            $randomCommercial = Commerciaux::inRandomOrder()->first();
-            $randomClient = Clients::inRandomOrder()->first();
-
-            // Création d'une nouvelle commande
-            $commande = new Commande();
-            $commande->commercialId = $randomCommercial->id;
-            $commande->clientId = $randomClient->id;
-            $commande->save();
-
-            // Sélection aléatoire des produits
-            $randomProductCount = rand(1, 4);
-            $randomProducts = Produits::inRandomOrder()->limit($randomProductCount)->get();
-
-            foreach ($randomProducts as $produit) 
-            
+        
+            $randomCommandeCount = rand(1, 4);
+            Log::channel('myapp_log')->info('Nombre de commandes générées : ' . $randomCommandeCount);
+            for ($i = 1; $i <= $randomCommandeCount; $i++)
             {
-                $quantite = rand(1, 99);
+                // Sélection aléatoire d'un commercial et d'un client
+                $randomCommercial = Commerciaux::inRandomOrder()->first();
+                $randomClient = Clients::inRandomOrder()->first();
+                // Création d'une nouvelle commande
+                $commande = new Commande();
+                $commande->commercialId = $randomCommercial->id;
+                $commande->clientId = $randomClient->id;
+                $commande->save();
+                // Sélection aléatoire des produits
+                $randomProductCount = rand(1, 4);
+                $randomProducts = Produits::inRandomOrder()->limit($randomProductCount)->get();
+                foreach ($randomProducts as $produit) 
+                {
+                    $quantite = rand(1, 99);
+                    // Création du détail de la commande
+                    $detailCommande = new Detailcommande();
+                    $detailCommande->commande_id = $commande->id;
+                    $detailCommande->produit_id = $produit->id;
+                    $detailCommande->quantite = $quantite;
+                    $detailCommande->prixProduit = $produit->prix;
+                    $detailCommande->sous_total = $produit->prix * $quantite;
+                    $detailCommande->save();
+                    // Mise à jour du nombre total vendu pour le produit
+                    $produit->totalVendu += $quantite;
+                    $produit->save();
+                    Log::channel('myapp_log')->info('Commande numero : ' . $detailCommande->id  . '.' .  ' Produit ajouté : ' . $produit->nomProduit . ', Quantité : ' . $quantite);
 
-                // Création du détail de la commande
-                $detailCommande = new Detailcommande();
-                $detailCommande->commande_id = $commande->id;
-                $detailCommande->produit_id = $produit->id;
-                $detailCommande->quantite = $quantite;
-                $detailCommande->prixProduit = $produit->prix;
-                $detailCommande->sous_total = $produit->prix * $quantite;
-                $detailCommande->save();
-
-                // Mise à jour du nombre total vendu pour le produit
-                $produit->totalVendu += $quantite;
-                $produit->save();
-
-                Log::channel('myapp_log')->info('Commande numero : ' . $detailCommande->id  . '.' .  ' Produit ajouté : ' . $produit->nomProduit . ', Quantité : ' . $quantite);
-
+                }
+                // Mise à jour des informations du commercial
+                $randomCommercial->nombreCommande++;
+                $randomCommercial->save();
+                // Mise à jour des informations du client
+                $randomClient->commandeClient++;
+                $randomClient->save();
             }
+        } catch(\Exception $e){
+            Log::channel('myapp_log')->error('Erreur lors de la génération des commandes: ' . $e->getMessage());
+            return redirect()->back()->withErrors('Erreur lors de la génération des commandes.');
+
+        }
 
 
-            // Mise à jour des informations du commercial
-            $randomCommercial->nombreCommande++;
-            $randomCommercial->save();
+        Log::channel('myapp_log')->info($randomCommandeCount . ' commandes générées avec succès.');
+        return redirect()->back()->with('status', $randomCommandeCount . ' commandes générées avec succès.');
+        
 
-            // Mise à jour des informations du client
-            $randomClient->commandeClient++;
-            $randomClient->save();
-    }
-
+        
         // Récupérer toutes les commandes pour les afficher
-        $liste = Commande::all();
+        
         return redirect()->back()->with('status', $randomCommandeCount . ' commandes générée avec succès.');
-
-        //return view('commande.commande-liste', ['liste' => $liste]);
-    
+        
     }   
 
-    
+
     public function index()
     {
         $commandes = Commande::with(['commerciaux', 'clients'])->get();
         //dd($commandes);
-        return view('/commande', compact('commandes'));
+        $nbreCommandes = Commande::count();
+        return view('/commande', compact('commandes' , 'nbreCommandes'));
     }
 
 

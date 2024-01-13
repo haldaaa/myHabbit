@@ -40,9 +40,9 @@
             </li>
   
             <li class="nav-item">
-              <a class="nav-link" href="{{   ('stats') }}">
+              <a class="nav-link" href="{{   route('dashboardindex') }}">
                 <span data-feather="layers" class="align-text-bottom" title="Statistiques"></span>
-                Statistiques
+                Dashboard
               </a>
             </li>
   

@@ -17,7 +17,7 @@ class ClientsFactory extends Factory
             'nomClient' => $this->faker->name(),
             'ageClient' => $this->faker->numberBetween(18, 80),
             'sexeClient' => $this->faker->randomElement(['Homme', 'Femme', 'Autre']),
-            'paysClient' => $this->faker->country(),
+            'paysClient' => $this->faker->randomElement(['France', 'Belgique', 'Luxembourg' , 'Italie' , 'Angleterre' , 'Portugal' , 'Bangkok']),
             'villeClient' => $this->faker->city(),
             'commandeClient' => 0,
         ];

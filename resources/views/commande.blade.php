@@ -33,6 +33,7 @@
                     <th scope="col">Nom du Commercial</th>
                     <th scope="col">Nom du Client</th>
                     <th scope="col">Pays du Client</th>
+                    <th scope="col"> Saison </th>
                     <th scope="col">Détails</th>
                 </tr>
               
@@ -45,6 +46,11 @@
                         <td>{{ $commande->commerciaux->nomCommercial }}</td> <!-- Assurez-vous que 'nom' est le champ correct -->
                         <td>{{ $commande->clients->nomClient }}</td>   <!-- Assurez-vous que 'nom' est le champ correct -->
                         <td>{{ $commande->clients->paysClient }}</td>
+
+                        <!-- Saison -->
+                        
+
+
                         <td>
                             <a href="{{ route('commande.details', $commande->id) }}">Voir Détails</a>
                         </td>

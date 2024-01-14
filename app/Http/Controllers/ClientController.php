@@ -36,10 +36,10 @@ class ClientController extends Controller
          }
      }
      
+
      public function destroyAll()
     {
     
-
         Clients::query()->delete(); // Supprime tous les clients
       
 

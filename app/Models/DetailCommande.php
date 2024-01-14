@@ -17,6 +17,7 @@ class DetailCommande extends Model
         'quantite',
         'prixProduit' ,
         'sous_total' ,
+        'saison' , 
 
     ];
 

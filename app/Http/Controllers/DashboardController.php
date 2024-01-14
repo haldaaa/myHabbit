@@ -23,13 +23,7 @@ class DashboardController extends Controller
 
 
 
-      // 
-      $paysAvecPlusDeVentes = Commande::join('clients', 'commandes.clientId', '=', 'clients.id')
-                            ->select('clients.nomClient', DB::raw('count(commandes.id) as totalVentes'))
-                               ->groupBy('clients.paysClient')
-                                ->orderBy('totalVentes', 'desc')
-                                ->get();
-          dd($paysAvecPlusDeVentes);
+ 
 
       return view('/dashboard', compact('label' , 'data'));
     }

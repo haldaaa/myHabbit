@@ -9,6 +9,7 @@ use App\Models\Produits;
 use App\Models\Clients;
 use App\Models\Commande;
 use App\Models\DetailCommande;
+use App\Models\Compteurs;
 
 use Illuminate\Support\Facades\Log;
 
@@ -46,13 +47,26 @@ class CommandeController extends Controller
      public function generateRandomCommande()
     {        
         try
-        { // ICI
+        { 
 
-        
             $randomCommandeCount = rand(1, 4);
-            Log::channel('myapp_log')->info('Nombre de commandes générées : ' . $randomCommandeCount);
+            Log::channel('myapp_log')->info('Nombre de commandes à générées : ' . $randomCommandeCount);
             for ($i = 1; $i <= $randomCommandeCount; $i++)
             {
+                // On initialise et incrémente le compteur saison 
+
+                $saison = Compteurs::firstOrNew(['id' => 1]); // Assurez-vous que l'identifiant est correct
+                $saison->compteurSaison++;
+                $saison->save();
+                
+                Log::channel('myapp_log')->info('Compteur saison incrémenté avec succés  :' . $saison->compteurSaison );
+
+                // On appelle la fonction getSaison pour déterminer la saison
+
+                $saisonNow = $this->getSaison($saison->compteurSaison);
+
+                Log::channel('myapp_log')->info('Saison actuel : ' . $saisonNow );
+
                 // Sélection aléatoire d'un commercial et d'un client
                 $randomCommercial = Commerciaux::inRandomOrder()->first();
                 $randomClient = Clients::inRandomOrder()->first();
@@ -74,11 +88,14 @@ class CommandeController extends Controller
                     $detailCommande->quantite = $quantite;
                     $detailCommande->prixProduit = $produit->prix;
                     $detailCommande->sous_total = $produit->prix * $quantite;
+
+                   $detailCommande->saison = $saisonNow;
+
                     $detailCommande->save();
                     // Mise à jour du nombre total vendu pour le produit
                     $produit->totalVendu += $quantite;
                     $produit->save();
-                    Log::channel('myapp_log')->info('Commande numero : ' . $detailCommande->id  . '.' .  ' Produit ajouté : ' . $produit->nomProduit . ', Quantité : ' . $quantite);
+                    Log::channel('myapp_log')->info('Commande numero : ' . $detailCommande->commande_id  . '.' .  ' Produit ajouté : ' . $produit->nomProduit . ', Quantité : ' . $quantite);
 
                 }
                 // Mise à jour des informations du commercial
@@ -107,9 +124,28 @@ class CommandeController extends Controller
     }   
 
 
+
+    public function getSaison($compteur)
+    {
+        $saisonIndex = ($compteur / 15) % 4;
+    
+        switch ($saisonIndex) {
+            case 0:
+                return "Printemps";
+            case 1:
+                return "Été";
+            case 2:
+                return "Automne";
+            case 3:
+                return "Hiver";
+        }
+    }
+    
+
+
     public function index()
     {
-        $commandes = Commande::with(['commerciaux', 'clients'])->get();
+        $commandes = Commande::with(['commerciaux', 'clients' , 'detailcommande'])->get();
         //dd($commandes);
         $nbreCommandes = Commande::count();
         return view('/commande', compact('commandes' , 'nbreCommandes'));
@@ -145,7 +181,7 @@ class CommandeController extends Controller
      */
     public function show($id)
     {
-        $commande = Commande::with(['commerciaux', 'clients', 'detailcommande.produits']) // Assurez-vous que ces relations sont correctes
+        $commande = Commande::with(['commerciaux', 'clients' , 'detailcommande']) // Assurez-vous que ces relations sont correctes
         ->findOrFail($id);
         //dd($commande);
         return view('commandedetail', compact('commande'));

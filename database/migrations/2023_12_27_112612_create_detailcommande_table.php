@@ -26,6 +26,8 @@ class CreateDetailcommandeTable extends Migration
             $table->integer('quantite');
             $table->integer('prixProduit');
             $table->integer('sous_total'); 
+            
+            $table->text('saison');
 
            
         });

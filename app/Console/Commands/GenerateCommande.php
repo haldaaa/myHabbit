@@ -41,7 +41,7 @@ class GenerateCommande extends Command
         $commandeController = new CommandeController();
         $commandeController->generateRandomCommande();
     
-        $this->info('Commandes aléatoires générées avec succès.');
+        $this->info('COUCOUCOUCOUCCommandes aléatoires générées avec succès.');
     
         return 0;
     }

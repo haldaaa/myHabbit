@@ -49,7 +49,7 @@ class CommandeController extends Controller
         try
         { 
 
-            $randomCommandeCount = rand(1, 4);
+            $randomCommandeCount = rand(1, 8);
             Log::channel('myapp_log')->info('Nombre de commandes à générées : ' . $randomCommandeCount);
             for ($i = 1; $i <= $randomCommandeCount; $i++)
             {

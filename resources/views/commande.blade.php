@@ -48,7 +48,7 @@
                         <td>{{ $commande->clients->paysClient }}</td>
 
                         <!-- Saison -->
-                        
+                        <td>{{ $commande->detailcommande->first()->saison ?? 'Non spécifiée' }}</td> <!-- Affiche la saison -->
 
 
                         <td>

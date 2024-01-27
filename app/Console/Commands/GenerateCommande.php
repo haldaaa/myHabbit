@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Http\Controllers\CommandeController; 
+use App\Http\Controllers\TourController; 
 use Illuminate\Console\Command;
 
 class GenerateCommande extends Command
@@ -38,9 +39,13 @@ class GenerateCommande extends Command
      */
     public function handle()
     {
-        $commandeController = new CommandeController();
-        $commandeController->generateRandomCommande();
+       
+       // $commandeController = new CommandeController();
+        //$commandeController->generateRandomCommande();
     
+        $tour = new TourController();
+        $tour->startTour();
+
         $this->info('COUCOUCOUCOUCCommandes aléatoires générées avec succès.');
     
         return 0;

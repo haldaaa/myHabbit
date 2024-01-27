@@ -50,16 +50,17 @@ class CommandeController extends Controller
         { 
 
             $randomCommandeCount = rand(1, 8);
+    
             Log::channel('myapp_log')->info('Nombre de commandes à générées : ' . $randomCommandeCount);
             for ($i = 1; $i <= $randomCommandeCount; $i++)
             {
                 // On initialise et incrémente le compteur saison 
 
                 $saison = Compteurs::firstOrNew(['id' => 1]); // Assurez-vous que l'identifiant est correct
-                $saison->compteurSaison++;
-                $saison->save();
-                
-                Log::channel('myapp_log')->info('Compteur saison incrémenté avec succés  :' . $saison->compteurSaison );
+               // $saison->compteurSaison++;
+               // $saison->save();
+            
+        
 
                 // On appelle la fonction getSaison pour déterminer la saison
 
@@ -129,6 +130,8 @@ class CommandeController extends Controller
     {
         $saisonIndex = ($compteur / 15) % 4;
     
+        Log::channel('myapp_log')->info('Lancement getSaison');
+
         switch ($saisonIndex) {
             case 0:
                 return "Printemps";
@@ -138,7 +141,9 @@ class CommandeController extends Controller
                 return "Automne";
             case 3:
                 return "Hiver";
+                Log::channel('myapp_log')->info('Saison CACA:' . $saisonIndex);
         }
+        Log::channel('myapp_log')->info('Saison :' . $saisonIndex);
     }
     
 
